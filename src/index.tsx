@@ -8,8 +8,6 @@ export type MatrixCodeRainComponentProps = {
   theColors?: string[];
   stripCount?: number;
 };
-// To disable <React.StrictMode> effect
-let isDrawin = false;
 const MatrixCodeRainComponent: React.FC<MatrixCodeRainComponentProps> = ({
   width,
   height,
@@ -73,8 +71,7 @@ const MatrixCodeRainComponent: React.FC<MatrixCodeRainComponentProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
-    if (!canvasRef.current || isDrawin) return;
-    isDrawin = true;
+    if (!canvasRef.current) return;
     const context = canvasRef.current.getContext('2d');
     if (!context) return;
     const canvas = canvasRef.current;
